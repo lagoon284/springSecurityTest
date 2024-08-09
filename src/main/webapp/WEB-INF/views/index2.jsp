@@ -14,6 +14,7 @@
     <title>Member 공개</title>
 </head>
 <body>
+    <a href="/">인덱스 페이지로 가기</a><br>
     <p>로그인 성공!</p>
     <p>이 페이지는 회원가입이 되어있는 Member들이 접근가능한 페이지입니다. (DB에 회원정보가 있는 USER.)</p>
     <p>Security User Info --------------------------------</p>

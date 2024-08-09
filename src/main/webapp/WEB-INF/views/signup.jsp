@@ -4,6 +4,7 @@
     <title>회원가입</title>
 </head>
 <body>
+    <a href="/">인덱스 페이지로 가기</a><br>
     <p>이 페이지는 Member 등록하는 페이지입니다.</p>
     <p>회원 정보 입력란----------------------------</p>
     <form action="/signup" method="post">

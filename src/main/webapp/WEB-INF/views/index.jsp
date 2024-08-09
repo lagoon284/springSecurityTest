@@ -14,6 +14,7 @@
     <p>Mapping 성공!!</p>
     <p>이 페이지는 모든 USER가 접근 가능한 페이지입니다.</p>
     <br>
-    <a href="/main">main으로 가기</a>
+    <a href="/main">main으로 가기</a><br>
+    <a href="/signupPage">회원 등록 하러가기</a>
 </body>
 </html>

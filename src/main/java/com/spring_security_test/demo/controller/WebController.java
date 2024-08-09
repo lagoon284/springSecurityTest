@@ -4,6 +4,7 @@ import com.spring_security_test.demo.config.auth.PrincipalDetails;
 import com.spring_security_test.demo.entity.Member;
 import com.spring_security_test.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequiredArgsConstructor
 public class WebController {
 
+    @Autowired
     private MemberService memberService;
 
     @RequestMapping(value = "/")
@@ -32,9 +34,20 @@ public class WebController {
         return "index2";
     }
 
+    @RequestMapping(value = "/signupPage")
+    public String signupPage() {
+        return "signup";
+    }
+
     // 회원가입 페이지
     @RequestMapping(value = "/signup", method = POST)
     public void signup(Member member) {
+
+        String pw = member.getPasswd();
+        String prefixPw = "{noop}" + pw;
+
+        member.setPasswd(prefixPw);
+
         memberService.memberInsert(member);
     }
 }
