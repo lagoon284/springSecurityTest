@@ -1,20 +1,20 @@
-# application.properties 설정법
+# 1. application.properties 설정법
 
-  ## In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.</br>
+  ## 1) In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.</br>
   접속 url : localhost:8080/h2-console</br>
   
   spring.datasource.url= jdbc:h2:mem:test</br>
   spring.datasource.username= sa</br>
   spring.datasource.password=
 
-  ## Embeded 방식, 로컬베이스로 영구적 데이터</br>
+  ## 2) Embeded 방식, 로컬베이스로 영구적 데이터</br>
   접속 url 동일.</br>
   
   spring.datasource.url= jdbc:h2:~/test (경로나 DB 이름 수정시 바뀔 수 있음. 임의지정 가능)</br>
   spring.datasource.username= sa (임의지정 가능)</br>
   spring.datasource.password= (임의지정 가능)
 
-# jpa hiber nate auto ddl 정책 설정.
+# 2. jpa hiber nate auto ddl 정책 설정.
 
   DB auto DDL 설정 (none, create, create-drop, update, validate)</br>
   none : 아무것도 하지않는다.</br>
