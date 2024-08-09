@@ -1,4 +1,4 @@
-1. application.properties 설정법
+# application.properties 설정법
 
   In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.</br>
   접속 url : localhost:8080/h2-console</br>
@@ -12,7 +12,7 @@
   spring.datasource.username= sa (임의지정 가능)</br>
   spring.datasource.password= (임의지정 가능)
 
-2. jpa hiber nate auto ddl 정책 설정.
+# jpa hiber nate auto ddl 정책 설정.
 
   DB auto DDL 설정 (none, create, create-drop, update, validate)</br>
   none : 아무것도 하지않는다.</br>
