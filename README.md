@@ -1,12 +1,12 @@
 1. application.properties 설정법
 
-  1) In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.
+  A. In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.
   접속 url : localhost:8080/h2-console
   spring.datasource.url= jdbc:h2:mem:test
   spring.datasource.username= sa
   spring.datasource.password=
 
-  2) Embeded 방식, 로컬베이스로 영구적 데이터
+  B. Embeded 방식, 로컬베이스로 영구적 데이터
   접속 url 동일.
   spring.datasource.url= jdbc:h2:~/test (경로나 DB 이름 수정시 바뀔 수 있음. 임의지정 가능)
   spring.datasource.username= sa (임의지정 가능)
