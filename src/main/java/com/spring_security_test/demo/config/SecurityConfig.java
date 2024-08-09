@@ -9,6 +9,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -22,6 +24,8 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 
 @Configuration
 @EnableWebSecurity
+// @Secured 기능할 수 있게 끔 해주는 어노테이션.
+@EnableGlobalMethodSecurity(securedEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -78,8 +82,9 @@ public class SecurityConfig {
 //                .httpBasic(AbstractHttpConfigurer::disable)
 //                .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/main").hasAnyRole("ADMIN", "USER")
-//                        .requestMatchers("/main").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+//                        .requestMatchers("/main").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/main").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+//                        .requestMatchers("/main").authenticated()
                         .anyRequest().permitAll())
 //                 폼 로그인은 추후에 적용.
                 .formLogin(formLogin -> formLogin

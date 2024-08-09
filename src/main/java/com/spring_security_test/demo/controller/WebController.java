@@ -5,6 +5,7 @@ import com.spring_security_test.demo.entity.Member;
 import com.spring_security_test.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,10 +31,12 @@ public class WebController {
     }
 
     // 로그인 성공 페이지
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/main")
     public String basicPage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
-
-        model.addAttribute("member", principalDetails.getMember());
+        if (principalDetails != null) {
+            model.addAttribute("member", principalDetails.getMember());
+        }
 
         return "index2";
     }
