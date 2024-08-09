@@ -9,11 +9,11 @@
     <p>회원 정보 입력란----------------------------</p>
     <form action="/signup" method="post">
         Name   : <input type="text" name="name"><br>
-        passwd : <input type="password" name="pw"><br>
+        passwd : <input type="password" name="passwd"><br>
         email  : <input type="email" name="email"><br>
         phone  : <input type="tel" name="phoneNum"><br>
-        <input type="radio" name="chk_role" value="user"> 일반 회원(user) <br>
-        <input type="radio" name="chk_role" value="admin"> 관리자(admin) <br>
+        <input type="radio" name="role" value="ROLE_USER"> 일반 회원(user) <br>
+        <input type="radio" name="role" value="ROLE_ADMIN"> 관리자(admin) <br>
 
         <input type="submit" value="가입">
     </form>

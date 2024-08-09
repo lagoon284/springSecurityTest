@@ -21,7 +21,11 @@ public class WebController {
     private MemberService memberService;
 
     @RequestMapping(value = "/")
-    public String indexPage() {
+    public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+        if (principalDetails != null) {
+            model.addAttribute("loginName", principalDetails.getMember().getName());
+        }
+
         return "index";
     }
 
@@ -36,6 +40,7 @@ public class WebController {
 
     @RequestMapping(value = "/signupPage")
     public String signupPage() {
+
         return "signup";
     }
 
