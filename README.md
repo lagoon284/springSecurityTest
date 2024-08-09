@@ -1,6 +1,6 @@
 application.properties 설정법
 
-  In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.
+  In_Memory 방식, 영구적 대이터 아님. 프로젝트 스탑 시 휘발됨.</br>
   접속 url : localhost:8080/h2-console
   spring.datasource.url= jdbc:h2:mem:test
   spring.datasource.username= sa
