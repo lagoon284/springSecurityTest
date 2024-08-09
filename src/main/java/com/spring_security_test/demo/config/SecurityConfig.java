@@ -51,6 +51,8 @@ public class SecurityConfig {
     // HttpBasic() : Http basic Auth 기반으로 로그인 인증창이 뜬다.
     // authorizeHttpRequests() : 인증, 인가가 필요한 URL 지정
     //
+    // role과 authority의 차이점 : role은 prefix로 "ROLE_"을 붙여줌. Authority는 prefix 없이.
+    //
     // anyRequest() : requestMatchers에서 지정된 URL외의 요청에 대한 설정
     // authenticated() : 해당 URL에 진입하기 위해서는 인증이 필요함
     // requestMatchers("Url").permitAll() : requestMatchers에서 지정된 url은 인증, 인가 없이도 접근 허용
@@ -76,7 +78,8 @@ public class SecurityConfig {
 //                .httpBasic(AbstractHttpConfigurer::disable)
 //                .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/main").hasRole("ADMIN")
+                        .requestMatchers("/main").hasAnyRole("ADMIN", "USER")
+//                        .requestMatchers("/main").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
                         .anyRequest().permitAll())
 //                 폼 로그인은 추후에 적용.
                 .formLogin(formLogin -> formLogin
