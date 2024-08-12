@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class WebController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/")
     public String indexPage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
@@ -51,10 +55,7 @@ public class WebController {
     @RequestMapping(value = "/signup", method = POST)
     public void signup(Member member) {
 
-        String pw = member.getPasswd();
-        String prefixPw = "{noop}" + pw;
-
-        member.setPasswd(prefixPw);
+        member.setPasswd("{noop}" + passwordEncoder.encode(member.getPasswd()));
 
         memberService.memberInsert(member);
     }
