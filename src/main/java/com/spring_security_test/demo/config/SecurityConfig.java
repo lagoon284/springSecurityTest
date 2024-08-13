@@ -86,6 +86,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
 //                        .requestMatchers("/main").hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/main").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+                        .requestMatchers("/infoUpdate").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
 //                        .requestMatchers("/main").authenticated()
                         .anyRequest().permitAll())
 //                 폼 로그인은 추후에 적용.

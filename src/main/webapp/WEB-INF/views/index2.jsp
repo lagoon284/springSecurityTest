@@ -26,5 +26,6 @@
     <p>token: ${requestScope.member.refreshToken eq null ? 'Null' : requestScope.member.refreshToken }</p>
     <p>role_info: ${requestScope.member.role }</p>
     <p>-----------------------------------------------------</p>
+    <input type="button" value="정보 수정" onclick="location.href='/infoUpdate'">
 </body>
 </html>

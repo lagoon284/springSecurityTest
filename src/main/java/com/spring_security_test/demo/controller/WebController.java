@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
@@ -35,7 +36,7 @@ public class WebController {
     }
 
     // 로그인 성공 페이지
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/main")
     public String basicPage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
         if (principalDetails != null) {
@@ -55,8 +56,26 @@ public class WebController {
     @RequestMapping(value = "/signup", method = POST)
     public void signup(Member member) {
 
-        member.setPasswd("{noop}" + passwordEncoder.encode(member.getPasswd()));
+        member.setPasswd(passwordEncoder.encode(member.getPasswd()));
 
         memberService.memberInsert(member);
+    }
+
+    @RequestMapping(value = "/infoUpdate", method = GET)
+    public String InfoUpdate(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+
+        model.addAttribute("memberInfo", principalDetails.getMember());
+
+        return "memInfoUpdate";
+    }
+
+    @RequestMapping(value = "/memInfoUpdate", method = POST)
+    public String memInfoUpdate(@AuthenticationPrincipal PrincipalDetails principalDetails, Member member) {
+
+        Member memInfo = memberService.memberUpdate(member);
+
+        principalDetails.setMember(memInfo);
+
+        return "redirect:/main";
     }
 }
